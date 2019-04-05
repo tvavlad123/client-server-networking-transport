@@ -46,6 +46,11 @@ namespace Server
             return ((BookingDBRepository)_bookingRepository).FindAll().ToList();
         }
 
+        public List<Client> GetAllClients()
+        {
+            return ((ClientDBRepository)_clientRepository).FindAll().ToList();
+        }
+
         public List<Ride> GetCustomRides(string destination, string date, string hour)
         {
             var tripService = new RideService(_rideRepository);

@@ -69,5 +69,15 @@ namespace networking
                 SeatNo = booking.SeatNo
             };
         }
+
+        public static ClientDTO GetClientDto(Client client)
+        {
+            return new ClientDTO
+            {
+                Id = client.Id,
+                FirstName = client.FirstName,
+                LastName = client.LastName
+            };
+        }
     }
 }

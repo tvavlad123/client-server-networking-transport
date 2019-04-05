@@ -44,6 +44,17 @@ namespace Networking
     }
 
     [Serializable]
+    public sealed class GetClientsResponse : IResponse
+    {
+        public GetClientsResponse(ClientDTO[] clients)
+        {
+            Clients = clients; 
+        }
+
+        public ClientDTO[] Clients { get; set; }
+    }
+
+    [Serializable]
     public sealed class GetBookingsResponse : IResponse
     {
         public GetBookingsResponse(BookingDTO[] bookings)

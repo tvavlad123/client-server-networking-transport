@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Networking
 {
+    [Serializable]
     public class ClientDTO
     {
         public int Id { get; set; }

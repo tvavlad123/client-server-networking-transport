@@ -48,6 +48,13 @@ namespace Client
             Console.WriteLine(@"Get all bookings succeeded ....");
             return result;
         }
+
+        public List<Transport.Model.Client> GetAllClients()
+        {
+            var result = _server.GetAllClients();
+            Console.WriteLine(@"Get all clients succeeded ....");
+            return result;
+        }
         public List<Ride> GetCustomRides(string destination, string date, string hour)
         {
             var result = _server.GetCustomRides(destination, date, hour);

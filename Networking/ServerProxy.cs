@@ -61,6 +61,16 @@ namespace networking
             return (response as GetRidesResponse)?.Rides.Select(DTOUtils.GetFromDto).ToList();
         }
 
+        public List<Client> GetAllClients()
+        {
+            var clientDto = new ClientDTO();
+            SendRequest(new GetAllClientsRequest(clientDto));
+            var response = ReadResponse();
+            if (response is ErrorResponse)
+                throw new Exception("Error Get All Clients");
+            return (response as GetClientsResponse)?.Clients.Select(DTOUtils.GetFromDto).ToList();
+        }
+
         public List<Booking> GetAllBookings()
         {
             var bookingDto = new BookingDTO();

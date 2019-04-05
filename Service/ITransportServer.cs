@@ -9,6 +9,7 @@ namespace services
         bool LogIn(Employee employee, ITransportObserver client);
         List<Ride> GetAllRides();
         List<Ride> GetCustomRides(string destination, string date, string hour);
+        List<Client> GetAllClients();
         List<Ride> AddBooking(Ride ride, Booking booking, Employee employee);
         void LogOut(Employee employee);
         Client GetCustomClients(string firstName, string lastName);

@@ -64,7 +64,7 @@ namespace Networking
 
                 try
                 {
-                    Thread.Sleep(1000);
+                    Thread.Sleep(10);
                 }
                 catch (Exception e)
                 {
@@ -134,6 +134,21 @@ namespace Networking
                             response = _server.GetAllBookings().Select(DTOUtils.GetBookingDto).ToArray();
                         }
                         return new GetBookingsResponse(response);
+                    }
+                    catch (Exception e)
+                    {
+                        return new ErrorResponse(e.Message);
+                    }
+                case GetAllClientsRequest _:
+                    Console.WriteLine("Get All Bookings request ...");
+                    try
+                    {
+                        ClientDTO[] response;
+                        lock (_server)
+                        {
+                            response = _server.GetAllClients().Select(DTOUtils.GetClientDto).ToArray();
+                        }
+                        return new GetClientsResponse(response);
                     }
                     catch (Exception e)
                     {
