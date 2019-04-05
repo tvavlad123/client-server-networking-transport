@@ -108,6 +108,7 @@ namespace Networking
                         _connected = false;
                         return new ErrorResponse(e.Message);
                     }
+
                 case GetAllRidesRequest _:
                     Console.WriteLine("Get All Trips request ...");
                     try
@@ -118,6 +119,21 @@ namespace Networking
                             response = _server.GetAllRides().Select(DTOUtils.GetRideDto).ToArray();
                         }
                         return new GetRidesResponse(response);
+                    }
+                    catch (Exception e)
+                    {
+                        return new ErrorResponse(e.Message);
+                    }
+                case GetAllBookingsRequest _:
+                    Console.WriteLine("Get All Bookings request ...");
+                    try
+                    {
+                        BookingDTO[] response;
+                        lock (_server)
+                        {
+                            response = _server.GetAllBookings().Select(DTOUtils.GetBookingDto).ToArray();
+                        }
+                        return new GetBookingsResponse(response);
                     }
                     catch (Exception e)
                     {

@@ -57,8 +57,18 @@ namespace networking
             SendRequest(new GetAllRidesRequest(rideDto));
             var response = ReadResponse();
             if (response is ErrorResponse)
-                throw new Exception("Error Get All");
+                throw new Exception("Error Get All Rides");
             return (response as GetRidesResponse)?.Rides.Select(DTOUtils.GetFromDto).ToList();
+        }
+
+        public List<Booking> GetAllBookings()
+        {
+            var bookingDto = new BookingDTO();
+            SendRequest(new GetAllBookingsRequest(bookingDto));
+            var response = ReadResponse();
+            if (response is ErrorResponse)
+                throw new Exception("Error Get All Bookings");
+            return (response as GetBookingsResponse)?.Bookings.Select(DTOUtils.GetFromDto).ToList();
         }
 
         public List<Ride> GetCustomRides(string destination, string date, string hour)

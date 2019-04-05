@@ -42,6 +42,12 @@ namespace Client
             return result;
         }
 
+        public List<Booking> GetAllBookings()
+        {
+            var result = _server.GetAllBookings();
+            Console.WriteLine(@"Get all bookings succeeded ....");
+            return result;
+        }
         public List<Ride> GetCustomRides(string destination, string date, string hour)
         {
             var result = _server.GetCustomRides(destination, date, hour);

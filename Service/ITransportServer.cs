@@ -12,5 +12,6 @@ namespace services
         List<Ride> AddBooking(Ride ride, Booking booking, Employee employee);
         void LogOut(Employee employee);
         Client GetCustomClients(string firstName, string lastName);
+        List<Booking> GetAllBookings();
     }
 }

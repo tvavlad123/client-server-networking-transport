@@ -32,6 +32,17 @@ namespace networking
     }
 
     [Serializable]
+    public class GetAllBookingsRequest : IRequest
+    {
+        public GetAllBookingsRequest(BookingDTO bookingDto)
+        {
+            BookingDto = bookingDto;
+        }
+
+        public virtual BookingDTO BookingDto { get; }
+    }
+
+    [Serializable]
     public class GetCustomRidesRequest : IRequest
     {
         public GetCustomRidesRequest(CustomRideDTO customRideDto)
