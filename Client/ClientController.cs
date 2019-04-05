@@ -81,9 +81,9 @@ namespace Client
             Console.WriteLine(@"Update Event called");
         }
 
-        public void AddBooking(Ride ride, Booking booking)
+        public void AddBooking(Ride ride, Booking booking, Transport.Model.Client client)
         {
-            var allRides = _server.AddBooking(ride, booking, _currentEmployee);
+            var allRides = _server.AddBooking(ride, booking, _currentEmployee, client);
             var employeeArgs = new EmployeeEventArgs(allRides, EmployeeEvent.BookingAdded);
             OnUpdateEvent(employeeArgs);
             Console.WriteLine(@"Make booking succeeded ....");
@@ -109,27 +109,6 @@ namespace Client
             Console.WriteLine(@"Log out succeeded ....");
         }
 
-        public int AvailableSeatsRide(Ride ride)
-        {
-            RideDBRepository rideDBRepository = new RideDBRepository(DBUtils.GetProperties());
-            RideService rideService = new RideService(rideDBRepository);
-            int availableSeats = rideService.AvailableSeatsRide(ride);
-            if (availableSeats <= 0) return 0;
-            else return availableSeats;
-        }
-
-        public List<Ride> FilterDestinationDateHour(string destination, string date, string hour)
-        {
-            RideDBRepository rideDBRepository = new RideDBRepository(DBUtils.GetProperties());
-            RideService rideService = new RideService(rideDBRepository);
-            return rideService.FilterDestinationDateHour(destination, date, hour);
-        }
-
-        public List<Tuple<string, int>> FilterByClient(int rideId)
-        {
-            BookingDBRepository bookingDBRepository = new BookingDBRepository(DBUtils.GetProperties());
-            BookingService bookingService = new BookingService(bookingDBRepository);
-            return bookingService.FilterByClient(rideId);
-        }
+        
     }
 }

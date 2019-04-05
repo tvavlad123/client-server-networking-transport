@@ -112,12 +112,13 @@ namespace networking
             return (response as GetClientResponse)?.Clients.Select(DTOUtils.GetFromDto).ToList().First();
         }
 
-        public List<Ride> AddBooking(Ride ride, Booking booking, Employee employee)
+        public List<Ride> AddBooking(Ride ride, Booking booking, Employee employee, Client client)
         {
+            var clientDto = DTOUtils.GetClientDto(client);
             var bookingDto = DTOUtils.GetBookingDto(booking);
             var rideDto = DTOUtils.GetRideDto(ride);
             var employeeDto = DTOUtils.GetEmployeeDto(employee);
-            SendRequest(new BookingRequest(bookingDto, rideDto, employeeDto));
+            SendRequest(new BookingRequest(bookingDto, rideDto, employeeDto, clientDto));
             var response = ReadResponse();
             if (response is ErrorResponse)
                 throw new Exception("Error add reservation");

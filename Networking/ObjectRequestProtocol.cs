@@ -79,16 +79,18 @@ namespace networking
     [Serializable]
     public class BookingRequest : IRequest
     {
-        public BookingRequest(BookingDTO bookingDto, RideDTO rideDto, EmployeeDTO employeeDto)
+        public BookingRequest(BookingDTO bookingDto, RideDTO rideDto, EmployeeDTO employeeDto, ClientDTO clientDto)
         {
             BookingDto = bookingDto;
             RideDto = rideDto;
             EmployeeDto = employeeDto;
+            ClientDto = clientDto;
         }
 
         public virtual BookingDTO BookingDto { get; }
         public virtual EmployeeDTO EmployeeDto { get; }
         public virtual RideDTO RideDto { get; }
+        public virtual ClientDTO ClientDto { get; }
     }
 
     [Serializable]

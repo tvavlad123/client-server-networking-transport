@@ -181,12 +181,13 @@ namespace Networking
                     var bookingRequest = (BookingRequest)request;
                     var ride = DTOUtils.GetFromDto(bookingRequest.RideDto);
                     var booking = DTOUtils.GetFromDto(bookingRequest.BookingDto);
+                    var client = DTOUtils.GetFromDto(bookingRequest.ClientDto);
                     employee = DTOUtils.GetFromDto(bookingRequest.EmployeeDto);
                     try
                     {
                         lock (_server)
                         {
-                            rides = _server.AddBooking(ride, booking, employee);
+                            rides = _server.AddBooking(ride, booking, employee, client);
                         }
                         return new GetRidesResponse(rides.Select(DTOUtils.GetRideDto).ToArray());
                     }

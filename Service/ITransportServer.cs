@@ -10,7 +10,7 @@ namespace services
         List<Ride> GetAllRides();
         List<Ride> GetCustomRides(string destination, string date, string hour);
         List<Client> GetAllClients();
-        List<Ride> AddBooking(Ride ride, Booking booking, Employee employee);
+        List<Ride> AddBooking(Ride ride, Booking booking, Employee employee, Client client);
         void LogOut(Employee employee);
         Client GetCustomClients(string firstName, string lastName);
         List<Booking> GetAllBookings();

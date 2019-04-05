@@ -93,12 +93,11 @@ namespace Server
             return list;
         }
 
-        public List<Ride> AddBooking(Ride ride, Booking booking, Employee employee)
+        public List<Ride> AddBooking(Ride ride, Booking booking, Employee employee, Client client)
         {
-            ((RideDBRepository)_rideRepository).Update(ride.Id, ride);
-            ((EmployeeDBRepository)_employeeRepository).Update(employee.Id, employee);
+            
             ((BookingDBRepository)_bookingRepository).Save(booking);
-
+            
             var allRides = ((RideDBRepository)_rideRepository).FindAll().ToList();
 
             foreach (var x in _observers.Keys)

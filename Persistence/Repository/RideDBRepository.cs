@@ -138,8 +138,9 @@ namespace Transport.Repository
                 command.CommandText = "UPDATE rides SET ID = @newId, destination = @destination, date = @date, hour = @hour WHERE ID = @id";
                 command.Parameters.Add(DBUtils.GetParameter(command, Tuple.Create("@newId", (object)entity.Id)));
                 command.Parameters.Add(DBUtils.GetParameter(command, Tuple.Create("@destination", (object)entity.Destination)));
-                command.Parameters.Add(DBUtils.GetParameter(command, Tuple.Create("@date", (object)entity.Date)));
-                command.Parameters.Add(DBUtils.GetParameter(command, Tuple.Create("@Hour", (object)entity.Hour)));
+                command.Parameters.Add(DBUtils.GetParameter(command, Tuple.Create("@date", (object)entity.Date.ToString("yyyy-MM-dd"))));
+                command.Parameters.Add(DBUtils.GetParameter(command, Tuple.Create("@Hour", (object)entity.Hour.ToString(@"HH\:mm"))));
+                command.Parameters.Add(DBUtils.GetParameter(command, Tuple.Create("@newId", (object)id)));
                 command.ExecuteNonQuery();
             }
         }
